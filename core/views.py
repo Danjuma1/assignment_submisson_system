@@ -13,7 +13,7 @@ class HomeView(ListView):
     paginate_by = 6
     template_name = 'core/index.html'
     model = Course
-    context_object_name = 'course'
+    context_object_name = 'courses'
 
     def get_queryset(self):
         return self.model.objects.all()

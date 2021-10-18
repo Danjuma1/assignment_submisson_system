@@ -11,7 +11,7 @@ class Course(models.Model):
     lecturer_name = models.CharField(max_length=50)
     course_description = models.TextField()
     created_at = models.DateField(default=timezone.now)
-    end_date = models.CharField(max_length=20)
+    end_date = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.course_code + " : " + self.course_title
