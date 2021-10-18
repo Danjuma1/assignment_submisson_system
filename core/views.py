@@ -116,6 +116,13 @@ class AssignmentView(ListView):
         return self.model.objects.all()  # filter(user_id=self.request.user.id).order_by('-id')
 
 
+# VIEW SINGLE ASSIGNMENT
+def assignment_single(request, id):
+    assignment = get_object_or_404(Assignment, id=id)
+    return render(request, "core/lecturer/view_assignment.html", {'assignment': assignment})
+
+
+
 # DELETE ASSIGNMENT VIEW
 class AssignmentDeleteView(DeleteView):
     model = Assignment
