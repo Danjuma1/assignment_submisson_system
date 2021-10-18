@@ -11,7 +11,7 @@ from .models import Course, Assignment, AssignmentSubmission
 
 class HomeView(ListView):
     paginate_by = 6
-    template_name = 'home.html'
+    template_name = 'core/index.html'
     model = Course
     context_object_name = 'course'
 
@@ -65,6 +65,7 @@ class CourseView(ListView):
         return self.model.objects.all().order_by('-id')  # filter(user_id=self.request.user.id).order_by('-id')
 
 
+# VIEW SINGLE COURSE VIEW
 def course_single(request, id):
     course = get_object_or_404(Course, id=id)
     return render(request, "core/lecturer/view_course.html", {'course': course})
