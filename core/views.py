@@ -54,7 +54,7 @@ class CourseCreateView(CreateView):
 class CourseView(ListView):
     model = Course
     template_name = 'core/lecturer/courses.html'
-    context_object_name = 'course'
+    context_object_name = 'courses'
 
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     # @method_decorator(user_is_lecturer, user_is_student)
@@ -76,7 +76,7 @@ class AssignmentCreateView(CreateView):
     template_name = 'core/lecturer/assignment_create.html'
     form_class = AssignmentCreateForm
     extra_context = {
-        'title': 'New Course'
+        'title': 'New Assignment'
     }
     success_url = reverse_lazy('core:assignment-list')
 
@@ -136,7 +136,7 @@ class AssignmentSubmissionView(CreateView):
     # extra_context = {
     #     'title': 'New Exam'
     # }
-    success_url = reverse_lazy('core:home')
+    success_url = reverse_lazy('core:course')
 
     @method_decorator(login_required(login_url=reverse_lazy('accounts:login')))
     def dispatch(self, request, *args, **kwargs):

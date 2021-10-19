@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Start Banner Area -->
+<section class="banner-area relative">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    View Course
+                </h1>
+                <p>  -   </p>
+                <div class="link-nav">
+                    <span class="box">
+                        <a>Go back to</a>
+                        <i class="lnr lnr-arrow-right"></i>
+                        <a href="{% url 'core:course' %}">Courses</a>
+                    </span>
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="rocket-img">
+        <img src="{% static 'main/img/rocket.png' %}" alt="">
+    </div>
+</section>
+<!-- End Banner Area -->
+
+	<!-- Start post-content Area -->
+	<section class="post-content-area single-post-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					<div class="single-post row">
+						<div class="col-lg-3  col-md-3 meta-details">
+							<div class="user-details row">
+								<p class="user-name col-lg-12 col-md-12 col-6"><a>{{ course.lecturer_name }}</a> <span class="lnr lnr-user"></span></p>
+								<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{ course.end_date }}</a> <span class="lnr lnr-calendar-full"></span></p>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9">
+                            <h3 class="mt-20 mb-20">{{ course.course_code }}</h3>
+							<h3 class="mt-20 mb-20">{{ course.course_title }}</h3>
+							<p class="excert">
+								{{ course.course_description }}
+							</p>
+						</div>
+					</div>
+                </div>
+                <div class="col-lg-4 sidebar-widgets">
+					<div class="widget-wrap">
+						<div class="single-sidebar-widget popular-post-widget">
+							<a href="{% url 'core:assignment-list' %}"><h4 class="popular-title">View Assigments</h4></a>
+						</div>
+						{% if request.user.is_authenticated and request.user.role == 'lecturer' %}
+						<div class="text-center">
+							<a href="{% url 'core:assignment-create' %}" class="primary-btn">Add Assignment</a>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End post-content Area -->
+
+{% endblock content %}

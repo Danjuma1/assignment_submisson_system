@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <!-- Start Banner Area -->
+    <section class="banner-area relative">
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Add a new Course
+                    </h1>
+                    <p>  -   </p>
+                    <div class="link-nav">
+                        <span class="box">
+                            <a>Go back to</a>
+                            <i class="lnr lnr-arrow-right"></i>
+                            <a href="{% url 'core:course' %}">Courses</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rocket-img">
+            <img src="{% static 'main/img/rocket.png' %}" alt="">
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <section class="feature-area">
+        <div class="container">
+            <h3 class="mb-30">Add a New Course</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="mt-10">
+                {% render_field form.course_code class="single-input" placeholder=form.course_code.label %}
+                </div>
+
+                <div class="mt-10">
+                {% render_field form.course_title class="single-input" placeholder=form.course_title.label %}
+                </div>
+
+                <div class="mt-10">
+                {% render_field form.lecturer_name class="single-input" placeholder=form.lecturer_name.label %}
+                </div>
+
+                <div class="mt-10">
+                {% render_field form.course_description class="single-input" placeholder=form.course_description.label %}
+                </div>
+
+                <div class="mt-10">
+                    {% render_field form.end_date class="single-input" placeholder=form.end_date.label %}
+                </div>
+                    <div class="col-md-12">
+                        <br/>
+                        <button type="submit" value="Create" class="btn btn-primary"> Submit </button>
+                    </div>
+
+            </form>
+
+        </div>
+    </section>
+
+    
+{% endblock content %}

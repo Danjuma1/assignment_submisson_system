@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Start Banner Area -->
+<section class="banner-area relative">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Courses
+                </h1>
+                <p>View all available courses</p>
+            </div>
+        </div>
+    </div>
+    <div class="rocket-img">
+        <img src="{% static 'main/img/rocket.png' %}" alt="">
+    </div>
+</section>
+<!-- End Banner Area -->
+
+
+<!--Start Feature Area -->
+<section class="feature-area">
+    <div class="container">
+        <div class="feature-inner row">
+            {% for course in courses %}
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    <i class="ti-files"></i>
+                    <h4><i class="fa fa-book"></i> {{ course.course_code }}</h4>
+                    <h5>{{ course.course_title }}</h5>
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
+                        <small>Lecturer: </small><p>{{ course.lecturer_name }} </p>
+                        <small> Course closes on: {{ course.end_date }} </small>
+                    </div>
+                    <br/>
+                    <a href="{% url 'core:course-view' course.id %}" class="genric-btn info circle arrow">View Course<span class="lnr lnr-arrow-right"></span></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- <div class="navigation-area">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                <div class="thumb">
+                    <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                </div>
+                <div class="arrow">
+                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                </div>
+                <div class="detials">
+                    <p>Prev Post</p>
+                    <a href="#"><h4>Space The Final Frontier</h4></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                <div class="detials">
+                    <p>Next Post</p>
+                    <a href="#"><h4>Telescopes 101</h4></a>
+                </div>
+                <div class="arrow">
+                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                </div>
+                <div class="thumb">
+                    <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</section>
+
+<section class="courses-area section-gap">
+    <div class="container">
+    {% if request.user.is_authenticated and request.user.role == 'lecturer' %}
+    <div class="text-center">
+        <h4>
+            Add a New Course
+        </h4>
+        <br/>
+        <a href="{% url 'core:course-create' %}" class="primary-btn">Add Course</a>
+    </div>
+    {% endif %}
+    </div>
+</section>
+<!-- End Feature Area -->
+
+
+{% endblock content %}

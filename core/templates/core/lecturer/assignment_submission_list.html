@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Start Banner Area -->
+<section class="banner-area relative">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Assigment Submissions
+                </h1>
+                <p>  -  </p>
+            </div>
+        </div>
+    </div>
+    <div class="rocket-img">
+        <img src="{% static 'main/img/rocket.png' %}" alt="">
+    </div>
+</section>
+<!-- End Banner Area -->
+
+
+<!--Start Feature Area -->
+<section class="feature-area">
+<div class="container">
+    <div class="section-top-border">
+        <h3 class="mb-30">Assigment Submissions</h3>
+        <div class="progress-table-wrap">
+            <div class="progress-table">
+                <div class="table-head">
+                    <div class="serial">#</div>
+                    <div class="country">Name</div>
+                    <div class="visit">Matric Number</div>
+                    <div class="percentage">Content</div>
+                </div>
+                {% for assg in assignment_submission %}
+                <div class="table-row">
+                    <div class="serial">{{ assg.id }}</div>
+                    <div class="country">{{ assg.name }}</a></div>
+                    <div class="visit">{{ assg.matric_no }}</div>
+                    <div class="percentage">{{ assg.content }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- End Feature Area -->
+
+{% endblock content %}

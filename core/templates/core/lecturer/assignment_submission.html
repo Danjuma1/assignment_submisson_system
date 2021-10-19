@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!-- Start Banner Area -->
+<section class="banner-area relative">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Add a new Assignment
+                </h1>
+                <p>  -   </p>
+            </div>
+        </div>
+    </div>
+    <div class="rocket-img">
+        <img src="{% static 'main/img/rocket.png' %}" alt="">
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<section class="feature-area">
+    <div class="container">
+        <h3 class="mb-30">Add a New Assignment</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mt-10">
+            {% render_field form.name class="single-input" placeholder=form.name.label %}
+            </div>
+
+            <div class="mt-10">
+            {% render_field form.matric_no class="single-input" placeholder=form.matric_no.label %}
+            </div>
+
+            <div class="mt-10">
+            {% render_field form.content class="single-input" placeholder=form.content.label %}
+            </div>
+
+            <div class="mt-10">
+            {% render_field form.file class="single-input" placeholder=form.file.label %}
+            </div>
+
+            <div class="col-md-12">
+                    <br/>
+                    <button type="submit" value="Create" class="btn btn-primary"> Submit </button>
+                </div>
+
+        </form>
+
+    </div>
+</section>
+
+{% endblock content %}

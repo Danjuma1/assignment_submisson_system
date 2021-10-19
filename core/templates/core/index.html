@@ -16,13 +16,16 @@
                 <p class="text-white">
                     Lecturers can also reduce the time the spend marking assignments manually.
                 </p>
-
-                
-
+                {% if user.is_authenticated %}
+                <div class="courses pt-20">
+                    <a href="{% url 'core:course' %}" data-wow-duration="1s" data-wow-delay=".3s" class="primary-btn mr-10 mb-10 wow fadeInDown">View Courses</a>
+                    </div>
+                {% else %}
                 <div class="courses pt-20">
                     <a href="{% url 'accounts:student-register' %}" data-wow-duration="1s" data-wow-delay=".3s" class="primary-btn mr-10 mb-10 wow fadeInDown">Join as a student</a>
                     <a href="{% url 'accounts:lecturer-register' %}" data-wow-duration="1s" data-wow-delay=".6s" class="primary-btn mr-10 mb-10 wow fadeInDown">Join as a Lecturer</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>

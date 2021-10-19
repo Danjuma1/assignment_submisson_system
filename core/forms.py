@@ -86,7 +86,7 @@ class AssignmentCreateForm(forms.ModelForm):
             }
         )
 
-        self.fields['duration'].widget.attrs.update(
+        self.fields['deadline'].widget.attrs.update(
             {
                 'placeholder': 'Submission Deadline',
             }

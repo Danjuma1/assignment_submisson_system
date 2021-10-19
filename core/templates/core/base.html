@@ -52,9 +52,7 @@
 					{% if user.is_authenticated %}
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="{% url 'core:home' %}">Home</a></li>
-						<li><a href="#">Courses</a></li>
-						<li><a href="#">Profile</a></li>
-						<li><a href="{% url 'accounts:login' %}">Logout</a></li>
+						<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
 					</ul>
 					{% else %}
 					<ul class="nav-menu">

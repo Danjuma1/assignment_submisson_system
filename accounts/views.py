@@ -18,7 +18,7 @@ class RegisterStudentView(CreateView):
     model = User
     form_class = StudentRegistrationForm
     template_name = 'accounts/student/register.html'
-    success_url = '/'
+    success_url = 'course'
 
     extra_context = {
         'title': 'Register'
@@ -77,7 +77,7 @@ class RegisterLecturerView(CreateView):
     model = User
     form_class = LecturerRegistrationForm
     template_name = 'accounts/lecturer/register.html'
-    success_url = '/'
+    success_url = 'course'
 
     extra_context = {
         'title': 'Register'
@@ -133,7 +133,7 @@ class EditLecturerProfileView(UpdateView):
 
 # LOGIN VIEW FOR BOTH USER
 class LoginView(FormView):
-    success_url = '/'
+    success_url = 'course'
     form_class = UserLoginForm
     template_name = 'accounts/login.html'
 
@@ -166,7 +166,7 @@ class LoginView(FormView):
 
 # LOGOUT VIEW
 class LogoutView(RedirectView):
-    url = '/logout'
+    url = '/'
 
     def get(self, request, *args, **kwargs):
         auth.logout(request)
